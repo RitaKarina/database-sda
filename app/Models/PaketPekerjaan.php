@@ -8,6 +8,11 @@ class PaketPekerjaan extends Model
 {
     protected $guarded = ['id'];
 
+    public function kabupaten()
+    {
+        return $this->belongsTo(Kabupaten::class);
+    }
+
     public function daerahIrigasi()
     {
         return $this->belongsTo(DaerahIrigasi::class);

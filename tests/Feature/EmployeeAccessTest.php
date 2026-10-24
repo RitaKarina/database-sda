@@ -42,6 +42,7 @@ class EmployeeAccessTest extends TestCase
             ->assertSee('Daerah Irigasi')
             ->assertSee('data-panel="irigasi"', false)
             ->assertSee('data-panel="embung"', false)
+            ->assertSee('btn-login-header')
             ->assertDontSee('public-panel-stack')
             ->assertDontSee('id="irigasi"', false)
             ->assertDontSee('id="embung"', false)
