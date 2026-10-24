@@ -10,10 +10,12 @@
 /.idea
 /.nova
 /.phpunit.cache
-/.vscode
+/.vscode/*
+!/.vscode/settings.json
 /.zed
 /auth.json
 /node_modules
+/.venv/
 /public/build
 /public/fonts-manifest.dev.json
 /public/hot

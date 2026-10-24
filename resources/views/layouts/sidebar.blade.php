@@ -1,8 +1,8 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white" style="width: 260px; min-height: 100vh;">
     <!-- Logo / Judul Sistem -->
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <i class="fas fa-water fa-2x me-2 text-primary"></i>
-        <span class="fs-5 fw-bold">Sistem SDA</span>
+        <x-logo size="48" class="me-2 flex-shrink-0" shadow />
+        <span class="fs-6 fw-bold text-uppercase">DATABASE SUMBER DAYA AIR</span>
     </a>
     <hr class="border-secondary">
 
@@ -24,7 +24,7 @@
         </li>
         <li class="nav-item mb-1">
             <a href="{{ route('kelembagaan.index') }}" class="nav-link text-white opacity-75">
-                <i class="fas fa-users me-2"></i> Kelembagaan
+                <i class="fas fa-users me-2"></i> Organisasi Personalia
             </a>
         </li>
         <li class="nav-item mb-1">

@@ -28,13 +28,15 @@
     </div>
     <div class="col-md-4">
         <select name="kabupaten_id" class="form-select">
-            <option value="">-- Semua Kabupaten --</option>
-            @foreach($kabupatens as $kab)
-                <option value="{{ $kab->id }}" {{ request('kabupaten_id') == $kab->id ? 'selected' : '' }}>
-                    {{ $kab->nama_kabupaten }}
-                </option>
-            @endforeach
-        </select>
+    <option value="">-- Semua Kabupaten --</option>
+    @if(isset($kabupatens))
+        @foreach($kabupatens as $kab)
+            <option value="{{ $kab }}" {{ request('kabupaten_id') == $kab ? 'selected' : '' }}>
+                {{ $kab }}
+            </option>
+        @endforeach
+    @endif
+</select>
     </div>
     <div class="col-md-3 d-flex gap-2">
         <button type="submit" class="btn btn-primary w-100"><i class="fas fa-search me-1"></i> Cari</button>

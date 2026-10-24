@@ -11,25 +11,18 @@ return new class extends Migration
         Schema::create('embungs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_embung');
-            $table->foreignId('kabupaten_id')->constrained('kabupatens')->onDelete('cascade');
-            $table->string('kecamatan_desa');
-            
-            // Lokasi & Spesifikasi
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->decimal('luas_genangan', 10, 2)->nullable(); // Ha
-            $table->decimal('volume_tampungan', 12, 2)->nullable(); // m3
+            $table->unsignedBigInteger('kabupaten_id')->nullable();
+            $table->unsignedBigInteger('kecamatan_id')->nullable();
+            $table->string('kabupaten')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('desa')->nullable();
+            $table->decimal('volume_tampungan', 15, 2)->nullable();
+            $table->decimal('luas_genangan', 15, 2)->nullable();
+            $table->string('sumber_air')->nullable();
             $table->integer('tahun_pembangunan')->nullable();
-            $table->string('sumber_anggaran')->nullable(); // APBD, APBN, dll.
-            
-            // Fungsi (Array / Text JSON)
-            $table->string('fungsi')->default('Irigasi'); // Irigasi, Air Baku, Konservasi, Pengendalian Banjir, Lainnya
-            
-            // Kondisi & Pemeliharaan
-            $table->string('kondisi')->default('Baik'); // Baik, Rusak Ringan, Rusak Berat
-            $table->string('status_op')->default('Aktif');
-            $table->integer('tahun_terakhir_pemeliharaan')->nullable();
-            
+            $table->string('kondisi')->nullable();
+            $table->string('status_fungsi')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

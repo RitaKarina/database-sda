@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-ntb.png') }}">
     <title>@yield('title', 'SI SDA') - Sistem Informasi SDA</title>
     
     <!-- Bootstrap 5 CSS CDN -->
@@ -21,10 +22,10 @@
 
 <div class="d-flex">
     <!-- Sidebar -->
-    <div class="sidebar p-3 text-white">
+    <div class="sidebar d-flex flex-column p-3 text-white">
         <a href="{{ route('dashboard') }}" class="d-flex align-items-center mb-3 text-white text-decoration-none">
-            <i class="fas fa-water fa-2x me-2 text-primary"></i>
-            <span class="fs-5 fw-bold">Sistem SDA</span>
+            <x-logo size="48" class="me-2 flex-shrink-0" shadow />
+            <span class="fs-6 fw-bold text-uppercase">DATABASE SUMBER DAYA AIR</span>
         </a>
         <hr class="border-secondary">
 
@@ -65,7 +66,7 @@
             </li>
             <li class="nav-item mb-1">
                 <a href="{{ route('kelembagaan.index') }}" class="nav-link {{ request()->is('kelembagaan*') ? 'active' : '' }}">
-                    <i class="fas fa-users me-2"></i> Data Kelembagaan (P3A/Komir)
+                    <i class="fas fa-users me-2"></i> Organisasi Personalia
                 </a>
             </li>
             <li class="nav-item mb-1">
@@ -79,6 +80,22 @@
                 </a>
             </li>
         </ul>
+        @auth
+            <div class="mt-auto pt-3">
+                <hr class="border-secondary">
+                <div class="small text-white-50 mb-2">Masuk sebagai</div>
+                <div class="fw-semibold mb-3">{{ auth()->user()->name }}</div>
+                <a href="{{ route('public.home') }}" class="btn btn-outline-light btn-sm w-100 mb-2">
+                    <i class="fas fa-globe me-1"></i> Halaman Publik
+                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-warning btn-sm w-100">
+                        <i class="fas fa-arrow-right-from-bracket me-1"></i> Keluar
+                    </button>
+                </form>
+            </div>
+        @endauth
     </div>
 
     <!-- Main Content Area -->
