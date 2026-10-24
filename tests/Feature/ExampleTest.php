@@ -35,4 +35,22 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Contoh DI');
     }
+
+    public function test_database_seeder_runs_successfully(): void
+    {
+        $this->seed();
+
+        $this->assertDatabaseHas('kabupatens', [
+            'nama_kabupaten' => 'Sumbawa',
+        ]);
+        $this->assertDatabaseHas('daerah_irigasis', [
+            'nama_di' => 'DI Batu Bulan',
+        ]);
+        $this->assertDatabaseHas('embungs', [
+            'nama_embung' => 'Embung Jereweh',
+        ]);
+        $this->assertDatabaseHas('paket_pekerjaans', [
+            'nama_paket' => 'Rehabilitasi Jaringan Irigasi DI Batu Bulan',
+        ]);
+    }
 }

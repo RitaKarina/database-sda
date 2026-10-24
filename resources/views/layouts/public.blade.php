@@ -33,6 +33,37 @@
         .btn-sda { color: #fff; background: var(--sda-green); border-color: var(--sda-green); transition: all .25s ease; white-space: nowrap; }
         .btn-sda:hover { color: #fff; background: var(--sda-green-dark); border-color: var(--sda-green-dark); transform: translateY(-1px); box-shadow: 0 10px 18px rgb(11 61 50 / 20%); }
 
+        .btn-login-header {
+            color: var(--sda-green);
+            background: #ffffff;
+            border: 1.5px solid var(--sda-green);
+            font-weight: 600;
+            transition: all .2s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(11, 61, 50, 0.08);
+        }
+        .btn-login-header:hover {
+            color: var(--sda-green-dark);
+            background: var(--sda-green-light);
+            border-color: var(--sda-green);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(11, 61, 50, 0.12);
+        }
+        .btn-login-header:active,
+        .btn-login-header:focus-visible,
+        .btn-login-header.is-pressed {
+            color: #ffffff !important;
+            background: var(--sda-green-dark) !important;
+            border-color: var(--sda-green-dark) !important;
+            transform: translateY(1px) scale(0.98);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+        }
+        .btn-login-header:active i,
+        .btn-login-header:focus-visible i,
+        .btn-login-header.is-pressed i {
+            color: #ffffff !important;
+        }
+
         .hero { position: relative; overflow: hidden; color: #fff; background: linear-gradient(120deg, #0b3d32 0%, #0f4c3a 30%, #1c6f59 72%, #2e8a7a 100%); }
         .hero::before { position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, rgb(255 255 255 / 16%), transparent 22%), radial-gradient(circle at 15% 80%, rgb(255 255 255 / 8%), transparent 28%); content: ''; }
         .hero::after { position: absolute; right: -80px; bottom: -260px; width: 500px; height: 500px; border: 1px solid rgb(255 255 255 / 15%); border-radius: 50%; content: ''; }
@@ -307,6 +338,7 @@
             .bubble-detail-view,
             .bubble-detail-panel,
             .btn-sda,
+            .btn-login-header,
             .btn-hero {
                 transition: none !important;
                 animation: none !important;
@@ -335,7 +367,8 @@
             .brand-description { display: none; }
             .public-nav { gap: .7rem; }
             .public-nav a { font-size: .82rem; }
-            .btn-sda { padding: .55rem .9rem; }
+            .btn-sda,
+            .btn-login-header { padding: .55rem .9rem; }
             .bubble-dashboard {
                 min-height: 340px;
                 padding-top: 1rem;
@@ -380,7 +413,7 @@
             <div class="public-nav d-flex align-items-center gap-3 gap-md-4">
                 @yield('navigation')
                 @unless (request()->routeIs('login'))
-                    <a href="{{ route('login') }}" class="btn btn-sda rounded-pill px-3 px-md-4">
+                    <a href="{{ route('login') }}" class="btn btn-login-header rounded-pill px-3 px-md-4">
                         <i class="fa-solid fa-lock me-2" aria-hidden="true"></i>Login Pengelola Data
                     </a>
                 @endunless
@@ -399,6 +432,13 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.btn-login-header').forEach(function (button) {
+            button.addEventListener('click', function () {
+                this.classList.add('is-pressed');
+            });
+        });
+    </script>
     @stack('scripts')
 </body>
 </html>
